@@ -1,0 +1,39 @@
+#include <iostream>
+using namespace std;
+
+class Counter {
+private:
+    int value;
+
+public:
+    Counter(int v = 0) : value(v) {}
+
+    // Prefix ++
+    Counter operator++() {
+        ++value;
+        return *this;
+    }
+
+    // Postfix ++
+    Counter operator++(int) {
+        Counter temp = *this;
+        value++;
+        return temp;
+    }
+
+    void display() {
+        cout << "Value: " << value << endl;
+    }
+};
+
+int main() {
+    Counter c1(5);
+
+    ++c1;  // Calls prefix ++
+    c1.display(); // Output: Value: 6
+
+    c1++;  // Calls postfix ++
+    c1.display(); // Output: Value: 7
+
+    return 0;
+}
